@@ -47,66 +47,66 @@
   </a-scene>
 
   <button id="btn-start" class="btn">Start</button>
-    <button id="btn-pause" class="btn" style="display: none;">Pause</button>
-    <script>
-      let isPaused = false;
-      const btnStart = document.getElementById('btn-start');
-      const btnPause = document.getElementById('btn-pause');
+  <button id="btn-pause" class="btn" style="display: none;">Pause</button>
+  <script>
+    let isPaused = false;
+    const btnStart = document.getElementById('btn-start');
+    const btnPause = document.getElementById('btn-pause');
 
-      btnStart.addEventListener('click', () => {
-        const model = document.querySelector('#item');
-        if (model) {
-          const animationMixer = model.components['animation-mixer'];
-          if (animationMixer) {
-            const actions = animationMixer.mixer._actions;
-            if (actions.length > 0) {
-              const action = actions[0];
-              if (isPaused) {
-                action.paused = false; // 一時停止を解除
-              } else {
-                action.play();
-              }
-              isPaused = false;
+    btnStart.addEventListener('click', () => {
+      const model = document.querySelector('#item');
+      if (model) {
+        const animationMixer = model.components['animation-mixer'];
+        if (animationMixer) {
+          const actions = animationMixer.mixer._actions;
+          if (actions.length > 0) {
+            const action = actions[0];
+            if (isPaused) {
+              action.paused = false; // 一時停止を解除
+            } else {
+              action.play();
             }
+            isPaused = false;
           }
         }
-        // document.querySelector('#video').play(); // 動画がある場合は再生
-        btnStart.style.display = 'none';
-        btnPause.style.display = 'block';
-      });
+      }
+      // document.querySelector('#video').play(); // 動画がある場合は再生
+      btnStart.style.display = 'none';
+      btnPause.style.display = 'block';
+    });
 
-      btnPause.addEventListener('click', () => {
-        const model = document.querySelector('#item');
-        if (model) {
-          const animationMixer = model.components['animation-mixer'];
-          if (animationMixer) {
-            const actions = animationMixer.mixer._actions;
-            if (actions.length > 0) {
-              const action = actions[0];
-              action.paused = true; // 一時停止
-              isPaused = true;
-            }
+    btnPause.addEventListener('click', () => {
+      const model = document.querySelector('#item');
+      if (model) {
+        const animationMixer = model.components['animation-mixer'];
+        if (animationMixer) {
+          const actions = animationMixer.mixer._actions;
+          if (actions.length > 0) {
+            const action = actions[0];
+            action.paused = true; // 一時停止
+            isPaused = true;
           }
         }
-        // document.querySelector('#video').pause(); // 動画がある場合は一時停止
-        btnPause.style.display = 'none';
-        btnStart.style.display = 'block';
-      });
+      }
+      // document.querySelector('#video').pause(); // 動画がある場合は一時停止
+      btnPause.style.display = 'none';
+      btnStart.style.display = 'block';
+    });
 
-      AFRAME.registerComponent('stop-animation-on-load', {
-        init: function () {
-          const el = this.el;
-          el.addEventListener('model-loaded', () => {
-            const model = el.getObject3D('mesh');
-            if (model && model.animations) {
-              const mixer = el.components['animation-mixer'].mixer;
-              mixer.stopAllAction();
-            }
-          });
-        }
-      });
+    AFRAME.registerComponent('stop-animation-on-load', {
+      init: function () {
+        const el = this.el;
+        el.addEventListener('model-loaded', () => {
+          const model = el.getObject3D('mesh');
+          if (model && model.animations) {
+            const mixer = el.components['animation-mixer'].mixer;
+            mixer.stopAllAction();
+          }
+        });
+      }
+    });
 
-      document.querySelector('#item').setAttribute('stop-animation-on-load', '');
-    </script>
+    document.querySelector('#item').setAttribute('stop-animation-on-load', '');
+  </script>
 </body>
 </html>
