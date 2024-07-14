@@ -20,16 +20,16 @@
   <a-scene mindar-image="filterMinCF:0.001; filterBeta: 0.01; imageTargetSrc: assets/target/targets.mind;"
            color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
     <a-assets>
-      <a-asset-item id="avatarModel" src="assets/blender/canbadge01.gltf"></a-asset-item>
+      <a-asset-item id="assetModel" src="assets/model/QS1252-W08-1all-1.glb"></a-asset-item>
     </a-assets>
 
     <a-camera look-controls="enabled: false"></a-camera>
 
     <a-entity mindar-image-target="targetIndex: 0">
-      <a-ring radius-inner="0.495" radius-outer="2" hider-material></a-ring>
-      <a-gltf-model position="0 0.1 -0.1" scale="0.625 0.625 0.625" src="#avatarModel" animation-mixer>
+      <!-- <a-ring radius-inner="0.495" radius-outer="2" hider-material></a-ring> -->
+      <a-gltf-model position="0 0.1 -0.1" scale="0.625 0.625 0.625" src="#assetModel" animation-mixer>
     </a-entity>
-    <a-text style="color: #f00">Ver1.1.4</a-text>
+    <a-text style="color: #f00">Ver1.0.0</a-text>
   </a-scene>
 </body>
 </html>
