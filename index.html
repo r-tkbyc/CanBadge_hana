@@ -742,7 +742,7 @@ animation: move 2s linear infinite;
 </head>
 
 <body>
-  <div class="ver-text" style="color: #f00;">Ver1.1.1</div>
+  <div class="ver-text" style="color: #f00;">Ver1.1.2</div>
 
   <div class="example-container">
     <div id="example-scanning-overlay" class="">
@@ -752,7 +752,7 @@ animation: move 2s linear infinite;
       </div>
     </div>
 
-    <a-scene mindar-image="imageTargetSrc: ./assets/card-example/card.mind; showStats: false; uiScanning: #example-scanning-overlay;"
+    <a-scene mindar-image="filterMinCF:0.001; filterBeta: 0.01; imageTargetSrc: ./assets/card-example/card.mind; showStats: false; uiScanning: #example-scanning-overlay;"
     embedded="" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights"
     vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false"
     inspector="" keyboard-shortcuts="" screenshot="">
