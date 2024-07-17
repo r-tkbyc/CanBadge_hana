@@ -103,35 +103,6 @@
             }
           });
 
-          paintandquestPreviewButton1.addEventListener('click', () => {
-            paintandquestPreviewButton1.setAttribute("visible", false);
-            const testVideo1 = document.createElement("video");
-            const canplayWebm1 = testVideo1.canPlayType('video/webm; codecs="vp8, vorbis"');
-            if (canplayWebm1 == "") {
-              document.querySelector("#paintandquest-video-link1").setAttribute(
-                "src", "#coffeemachine-preview-mp4");
-              document.querySelector("#coffeemachine-preview-mp4").play();
-            } else {
-              document.querySelector("#paintandquest-video-link1").setAttribute(
-                "src", "#coffeemachine-preview-webm");
-              document.querySelector("#coffeemachine-preview-webm").play();
-            }
-          });
-
-          paintandquestPreviewButton2.addEventListener('click', () => {
-            paintandquestPreviewButton2.setAttribute("visible", false);
-            const testVideo2 = document.createElement("video");
-            const canplayWebm2 = testVideo2.canPlayType('video/webm; codecs="vp8, vorbis"');
-            if (canplayWebm2 == "") {
-              document.querySelector("#paintandquest-video-link2").setAttribute(
-                "src", "#peak-preview-mp4");
-              document.querySelector("#peak-preview-mp4").play();
-            } else {
-              document.querySelector("#paintandquest-video-link2").setAttribute(
-                "src", "#peak-preview-webm");
-              document.querySelector("#peak-preview-webm").play();
-            }
-          });
 
           setTimeout(() => {
             done();
@@ -329,7 +300,7 @@
 </head>
 
 <body>
-  <div style="color: #f00;">Ver1.3.9</div>
+  <div style="color: #f00;">Ver1.4.0</div>
 
   <div class="example-container">
     <div id="example-scanning-overlay" class="">
