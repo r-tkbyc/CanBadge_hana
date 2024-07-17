@@ -89,41 +89,49 @@
           });
 
           paintandquestPreviewButton0.addEventListener('click', () => {
-    paintandquestPreviewButton0.setAttribute("visible", false);
-    const video0 = document.querySelector("#paintandquest-video-link");
-    const canplayWebm0 = video0.canPlayType('video/webm; codecs="vp8, vorbis"');
-    if (canplayWebm0 === "") {
-        video0.setAttribute("src", "#paintandquest-video-mp4");
-    } else {
-        video0.setAttribute("src", "#paintandquest-video-webm");
-    }
-    video0.play();
-});
+            paintandquestPreviewButton0.setAttribute("visible", false);
+            const testVideo0 = document.createElement("video");
+            const canplayWebm0 = testVideo0.canPlayType('video/webm; codecs="vp8, vorbis"');
+            if (canplayWebm0 == "") {
+              document.querySelector("#paintandquest-video-link").setAttribute(
+                "src", "#paintandquest-video-mp4");
+              document.querySelector("#paintandquest-video-mp4").play();
+            } else {
+              document.querySelector("#paintandquest-video-link").setAttribute(
+                "src", "#paintandquest-video-webm");
+              document.querySelector("#paintandquest-video-webm").play();
+            }
+          });
 
-paintandquestPreviewButton1.addEventListener('click', () => {
-    paintandquestPreviewButton1.setAttribute("visible", false);
-    const video1 = document.querySelector("#paintandquest-video-link1");
-    const canplayWebm1 = video1.canPlayType('video/webm; codecs="vp8, vorbis"');
-    if (canplayWebm1 === "") {
-        video1.setAttribute("src", "#coffeemachine-preview-mp4");
-    } else {
-        video1.setAttribute("src", "#coffeemachine-preview-webm");
-    }
-    video1.play();
-});
+          paintandquestPreviewButton1.addEventListener('click', () => {
+            paintandquestPreviewButton1.setAttribute("visible", false);
+            const testVideo1 = document.createElement("video");
+            const canplayWebm1 = testVideo1.canPlayType('video/webm; codecs="vp8, vorbis"');
+            if (canplayWebm1 == "") {
+              document.querySelector("#paintandquest-video-link1").setAttribute(
+                "src", "#coffeemachine-preview-mp4");
+              document.querySelector("#coffeemachine-preview-mp4").play();
+            } else {
+              document.querySelector("#paintandquest-video-link1").setAttribute(
+                "src", "#coffeemachine-preview-webm");
+              document.querySelector("#coffeemachine-preview-webm").play();
+            }
+          });
 
-paintandquestPreviewButton2.addEventListener('click', () => {
-    paintandquestPreviewButton2.setAttribute("visible", false);
-    const video2 = document.querySelector("#paintandquest-video-link2");
-    const canplayWebm2 = video2.canPlayType('video/webm; codecs="vp8, vorbis"');
-    if (canplayWebm2 === "") {
-        video2.setAttribute("src", "#peak-preview-mp4");
-    } else {
-        video2.setAttribute("src", "#peak-preview-webm");
-    }
-    video2.play();
-});
-
+          paintandquestPreviewButton2.addEventListener('click', () => {
+            paintandquestPreviewButton2.setAttribute("visible", false);
+            const testVideo2 = document.createElement("video");
+            const canplayWebm2 = testVideo2.canPlayType('video/webm; codecs="vp8, vorbis"');
+            if (canplayWebm2 == "") {
+              document.querySelector("#paintandquest-video-link2").setAttribute(
+                "src", "#peak-preview-mp4");
+              document.querySelector("#peak-preview-mp4").play();
+            } else {
+              document.querySelector("#paintandquest-video-link2").setAttribute(
+                "src", "#peak-preview-webm");
+              document.querySelector("#peak-preview-webm").play();
+            }
+          });
 
           setTimeout(() => {
             done();
@@ -321,7 +329,7 @@ paintandquestPreviewButton2.addEventListener('click', () => {
 </head>
 
 <body>
-  <div style="color: #f00;">Ver1.3.1</div>
+  <div style="color: #f00;">Ver1.3.2</div>
 
   <div class="example-container">
     <div id="example-scanning-overlay" class="">
@@ -363,25 +371,46 @@ paintandquestPreviewButton2.addEventListener('click', () => {
       </a-camera>
 
       <a-entity id="mytarget" mytarget="" mindar-image-target="targetIndex: 0">
-        <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0" material="" geometry=""></a-plane>
+        <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0" material=""
+        geometry=""></a-plane>
 
         <a-entity visible="false" id="portfolio-panel" position="0 0 -0.01">
-          <a-text value="Portfolio" color="black" align="center" width="2" position="0 0.4 0" text=""></a-text>
+          <a-text value="Portfolio" color="black" align="center" width="2" position="0 0.4 0"
+          text=""></a-text>
           <a-entity id="portfolio-item0">
-              <a-video id="paintandquest-video-link" webkit-playsinline playsinline width="1" height="0.552" position="0 0 0" material="" geometry=""></a-video>
-              <a-image id="paintandquest-preview-button" class="clickable" src="#paintandquest-preview" alpha-test="0.5" position="0 0 0" height="0.552" width="1" material="" geometry=""></a-image>
+            <a-video id="paintandquest-video-link" webkit-playsinline="" playsinline="" width="1"
+            height="0.552" position="0 0 0" material="" geometry=""></a-video>
+            <a-image id="paintandquest-preview-button" class="clickable" src="#paintandquest-preview"
+            alpha-test="0.5" position="0 0 0" height="0.552" width="1" material=""
+            geometry="">
+            </a-image>
           </a-entity>
           <a-entity id="portfolio-item1">
-              <a-video id="paintandquest-video-link1" webkit-playsinline playsinline width="1" height="0.552" position="0 0 0" material="" geometry=""></a-video>
-              <a-image id="paintandquest-preview-button1" class="clickable" src="#paintandquest-preview" alpha-test="0.5" position="0 0 0" height="0.552" width="1" material="" geometry=""></a-image>
+            <a-video id="paintandquest-video-link1" webkit-playsinline="" playsinline="" width="1"
+            height="0.552" position="0 0 0" material="" geometry=""></a-video>
+            <a-image id="paintandquest-preview-button1" class="clickable" src="#paintandquest-preview"
+            alpha-test="0.5" position="0 0 0" height="0.552" width="1" material=""
+            geometry="">
+            </a-image>
           </a-entity>
           <a-entity id="portfolio-item2">
-              <a-video id="paintandquest-video-link2" webkit-playsinline playsinline width="1" height="0.552" position="0 0 0" material="" geometry=""></a-video>
-              <a-image id="paintandquest-preview-button2" class="clickable" src="#paintandquest-preview" alpha-test="0.5" position="0 0 0" height="0.552" width="1" material="" geometry=""></a-image>
+            <a-video id="paintandquest-video-link2" webkit-playsinline="" playsinline="" width="1"
+            height="0.552" position="0 0 0" material="" geometry=""></a-video>
+            <a-image id="paintandquest-preview-button2" class="clickable" src="#paintandquest-preview"
+            alpha-test="0.5" position="0 0 0" height="0.552" width="1" material=""
+            geometry="">
+            </a-image>
           </a-entity>
+          <!-- <a-entity id="portfolio-item1" visible="false">
+            <a-image class="clickable" src="#coffeemachine-preview" alpha-test="0.5" position="0 0 0"
+            height="0.552" width="1" material="" geometry="">
+            </a-image>
+          </a-entity> -->
 
-          <a-image visible="false" id="portfolio-left-button" class="clickable" src="#icon-left" position="-0.7 0 0" height="0.15" width="0.15" material="" geometry=""></a-image>
-          <a-image visible="false" id="portfolio-right-button" class="clickable" src="#icon-right" position="0.7 0 0" height="0.15" width="0.15" material="" geometry=""></a-image>
+          <a-image visible="false" id="portfolio-left-button" class="clickable" src="#icon-left"
+          position="-0.7 0 0" height="0.15" width="0.15" material="" geometry=""></a-image>
+          <a-image visible="false" id="portfolio-right-button" class="clickable" src="#icon-right"
+          position="0.7 0 0" height="0.15" width="0.15" material="" geometry=""></a-image>
         </a-entity>
 
         <a-image visible="false" id="profile-button" class="clickable" src="#icon-profile"
