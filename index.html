@@ -59,7 +59,7 @@
       const portfolioLeftButton = document.querySelector("#portfolio-left-button");
       const portfolioRightButton = document.querySelector("#portfolio-right-button");
       const paintandquestPreviewButton0 = document.querySelector("#paintandquest-preview-button");
-      const paintandquestPreviewButton1 = document.querySelector("#paintandquest-preview-button");
+      const paintandquestPreviewButton1 = document.querySelector("#paintandquest-preview-button1");
 
       let y = 0;
       let currentItem = 0;
@@ -90,8 +90,8 @@
           paintandquestPreviewButton0.addEventListener('click', () => {
             paintandquestPreviewButton0.setAttribute("visible", false);
             const testVideo0 = document.createElement("video");
-            const canplayWebm = testVideo0.canPlayType('video/webm; codecs="vp8, vorbis"');
-            if (canplayWebm == "") {
+            const canplayWebm0 = testVideo0.canPlayType('video/webm; codecs="vp8, vorbis"');
+            if (canplayWebm0 == "") {
               document.querySelector("#paintandquest-video-link").setAttribute(
                 "src", "#paintandquest-video-mp4");
               document.querySelector("#paintandquest-video-mp4").play();
@@ -104,16 +104,16 @@
 
           paintandquestPreviewButton1.addEventListener('click', () => {
             paintandquestPreviewButton1.setAttribute("visible", false);
-            const testVideo0 = document.createElement("video");
-            const canplayWebm = testVideo1.canPlayType('video/webm; codecs="vp8, vorbis"');
-            if (canplayWebm == "") {
+            const testVideo1 = document.createElement("video");
+            const canplayWebm1 = testVideo1.canPlayType('video/webm; codecs="vp8, vorbis"');
+            if (canplayWebm1 == "") {
               document.querySelector("#paintandquest-video-link1").setAttribute(
-                "src", "#paintandquest-video-mp4");
-              document.querySelector("#paintandquest-video-mp4").play();
+                "src", "#coffeemachine-preview-mp4");
+              document.querySelector("#coffeemachine-preview-mp4").play();
             } else {
               document.querySelector("#paintandquest-video-link1").setAttribute(
-                "src", "#paintandquest-video-webm");
-              document.querySelector("#paintandquest-video-webm").play();
+                "src", "#coffeemachine-preview-webm");
+              document.querySelector("#coffeemachine-preview-webm").play();
             }
           });
 
@@ -313,7 +313,7 @@
 </head>
 
 <body>
-  <div style="color: #f00;">Ver1.2.7</div>
+  <div style="color: #f00;">Ver1.2.8</div>
 
   <div class="example-container">
     <div id="example-scanning-overlay" class="">
@@ -340,7 +340,7 @@
         <img id="paintandquest-preview" src="./assets/card-example/portfolio/paintandquest-preview.png">
         <video id="paintandquest-video-mp4" autoplay="false" loop="true" src="./assets/videos/video1.mp4" playsinline="" webkit-playsinline=""></video>
         <video id="paintandquest-video-webm" autoplay="false" loop="true" src="./assets/videos/video1.webm" playsinline="" webkit-playsinline=""></video>
-        <video id="coffeemachine-preview" autoplay="false" loop="true" src="./assets/videos/video2.mp4" playsinline="" webkit-playsinline=""></video>
+        <video id="coffeemachine-preview-mp4" autoplay="false" loop="true" src="./assets/videos/video2.mp4" playsinline="" webkit-playsinline=""></video>
         <video id="coffeemachine-preview-webm" autoplay="false" loop="true" src="./assets/videos/video2.webm" playsinline="" webkit-playsinline=""></video>
         <video id="peak-preview" autoplay="false" loop="true" src="./assets/videos/video3.mp4" playsinline="" webkit-playsinline=""></video>
         <video id="peak-preview-webm" autoplay="false" loop="true" src="./assets/videos/video3.webm" playsinline="" webkit-playsinline=""></video>
@@ -372,7 +372,7 @@
           <a-entity id="portfolio-item1">
             <a-video id="paintandquest-video-link1" webkit-playsinline="" playsinline="" width="1"
             height="0.552" position="0 0 0" material="" geometry=""></a-video>
-            <a-image id="paintandquest-preview-button" class="clickable" src="#paintandquest-preview"
+            <a-image id="paintandquest-preview-button1" class="clickable" src="#paintandquest-preview"
             alpha-test="0.5" position="0 0 0" height="0.552" width="1" material=""
             geometry="">
             </a-image>
