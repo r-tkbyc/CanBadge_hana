@@ -225,7 +225,7 @@
   </style>
 </head>
 <body>
-  <div style="color: #f00;">Ver1.3.4</div>
+  <div style="color: #f00;">Ver1.3.5</div>
 
   <div class="example-container">
     <div id="example-scanning-overlay" class="">
@@ -235,7 +235,10 @@
       </div>
     </div>
 
-    <a-scene mindar-image="filterMinCF:0.001; filterBeta: 0.001;" color-space="sRGB" embedded>
+    <a-scene mindar-image="filterMinCF:0.001; filterBeta: 0.01; imageTargetSrc: ./assets/target/targets.mind; showStats: false; uiScanning: #example-scanning-overlay;"
+    embedded="" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights"
+    vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false"
+    inspector="" keyboard-shortcuts="" screenshot="">
       <a-assets>
         <img id="card" src="./assets/target/bc.png" />
         <img id="profile" src="./assets/icon/profile.png" />
