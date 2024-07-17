@@ -89,23 +89,17 @@
           paintandquestPreviewButton.addEventListener('click', () => {
             paintandquestPreviewButton.setAttribute("visible", false);
             const testVideo = document.createElement("video");
-            document.querySelector("#paintandquest-video-link").setAttribute("src", "#paintandquest-video-mp4");
-            document.querySelector("#paintandquest-video-mp4").play();
+            const canplayWebm = testVideo.canPlayType('video/webm; codecs="vp8, vorbis"');
+            if (canplayWebm == "") {
+              document.querySelector("#paintandquest-video-link").setAttribute(
+                "src", "#paintandquest-video-mp4");
+              document.querySelector("#paintandquest-video-mp4").play();
+            } else {
+              document.querySelector("#paintandquest-video-link").setAttribute(
+                "src", "#paintandquest-video-webm");
+              document.querySelector("#paintandquest-video-webm").play();
+            }
           });
-          // paintandquestPreviewButton.addEventListener('click', () => {
-          //   paintandquestPreviewButton.setAttribute("visible", false);
-          //   const testVideo = document.createElement("video");
-          //   const canplayWebm = testVideo.canPlayType('video/webm; codecs="vp8, vorbis"');
-          //   if (canplayWebm == "") {
-          //     document.querySelector("#paintandquest-video-link").setAttribute(
-          //       "src", "#paintandquest-video-mp4");
-          //     document.querySelector("#paintandquest-video-mp4").play();
-          //   } else {
-          //     document.querySelector("#paintandquest-video-link").setAttribute(
-          //       "src", "#paintandquest-video-webm");
-          //     document.querySelector("#paintandquest-video-webm").play();
-          //   }
-          // });
 
           setTimeout(() => {
             done();
@@ -303,7 +297,7 @@
 </head>
 
 <body>
-  <div style="color: #f00;">Ver1.2.2</div>
+  <div style="color: #f00;">Ver1.2.3</div>
 
   <div class="example-container">
     <div id="example-scanning-overlay" class="">
@@ -331,7 +325,9 @@
         <video id="paintandquest-video-mp4" autoplay="false" loop="true" src="./assets/videos/video1.mp4" playsinline="" webkit-playsinline=""></video>
         <video id="paintandquest-video-webm" autoplay="false" loop="true" src="./assets/videos/video1.webm" playsinline="" webkit-playsinline=""></video>
         <video id="coffeemachine-preview" autoplay="false" loop="true" src="./assets/videos/video2.mp4" playsinline="" webkit-playsinline=""></video>
+        <video id="coffeemachine-preview-webm" autoplay="false" loop="true" src="./assets/videos/video2.webm" playsinline="" webkit-playsinline=""></video>
         <video id="peak-preview" autoplay="false" loop="true" src="./assets/videos/video3.mp4" playsinline="" webkit-playsinline=""></video>
+        <video id="peak-preview-webm" autoplay="false" loop="true" src="./assets/videos/video3.webm" playsinline="" webkit-playsinline=""></video>
         <!-- <img id="coffeemachine-preview" src="./assets/card-example/portfolio/coffeemachine-preview.png"> -->
         <!-- <img id="peak-preview" src="./assets/card-example/portfolio/peak-preview.png"> -->
 
@@ -357,11 +353,19 @@
             geometry="">
             </a-image>
           </a-entity>
-          <a-entity id="portfolio-item1" visible="false">
+          <a-entity id="portfolio-item1">
+            <a-video id="paintandquest-video-link" webkit-playsinline="" playsinline="" width="1"
+            height="0.552" position="0 0 0" material="" geometry=""></a-video>
+            <a-image id="paintandquest-preview-button" class="clickable" src="#paintandquest-preview"
+            alpha-test="0.5" position="0 0 0" height="0.552" width="1" material=""
+            geometry="">
+            </a-image>
+          </a-entity>
+          <!-- <a-entity id="portfolio-item1" visible="false">
             <a-image class="clickable" src="#coffeemachine-preview" alpha-test="0.5" position="0 0 0"
             height="0.552" width="1" material="" geometry="">
             </a-image>
-          </a-entity>
+          </a-entity> -->
           <a-entity id="portfolio-item2" visible="false">
             <a-image class="clickable" src="#peak-preview" alpha-test="0.5" position="0 0 0"
             height="0.552" width="1" material="" geometry="">
