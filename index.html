@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -8,68 +9,71 @@
   <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
 
   <script>
-    const showInfo = () => {
-      const profileButton = document.querySelector("#profile-button");
-      const text = document.querySelector("#text");
+    document.addEventListener("DOMContentLoaded", () => {
+      const showInfo = () => {
+        const profileButton = document.querySelector("#profile-button");
+        const text = document.querySelector("#text");
 
-      profileButton.setAttribute("visible", true);
+        profileButton.setAttribute("visible", true);
 
-      profileButton.addEventListener('click', function(evt) {
-        profileButton.setAttribute("visible", false);
-        text.setAttribute("visible", false);
-        const testVideo = document.createElement("video");
-        const canplayWebm = testVideo.canPlayType('video/webm; codecs="vp8, vorbis"');
-        if (canplayWebm == "") {
-          document.querySelector("#paintandquest-video-link").setAttribute(
-            "src", "#paintandquest-video-mp4");
-          document.querySelector("#paintandquest-video-mp4").setAttribute("visible", true);
-        } else {
-          document.querySelector("#paintandquest-video-link").setAttribute(
-            "src", "#paintandquest-video-webm");
-          document.querySelector("#paintandquest-video-webm").setAttribute("visible", true);
-        }
-      });
-
-      document.querySelector("#paintandquest-video-link").addEventListener('click', function(evt) {
-        if (document.querySelector("#paintandquest-video-link").getAttribute("src") === "#paintandquest-video-mp4") {
-          document.querySelector("#paintandquest-video-mp4").play();
-        } else {
-          document.querySelector("#paintandquest-video-webm").play();
-        }
-      });
-    }
-
-    /*const showPortfolio = (done) => {
-      // This function is now unused and commented out.
-    }*/
-
-    const showAvatar = (onDone) => {
-      const avatar = document.querySelector("#avatar");
-      let z = -0.3;
-      const id = setInterval(() => {
-        z += 0.008;
-        if (z >= 0.3) {
-          clearInterval(id);
-          onDone();
-        }
-        avatar.setAttribute("position", "0 -0.25 " + z);
-      }, 10);
-    }
-
-    AFRAME.registerComponent('mytarget', {
-      init: function() {
-        this.el.addEventListener('targetFound', event => {
-          console.log("target found");
-          showAvatar(() => {
-            setTimeout(() => {
-              showInfo();
-            }, 300);
-          });
+        profileButton.addEventListener('click', function(evt) {
+          profileButton.setAttribute("visible", false);
+          text.setAttribute("visible", false);
+          const testVideo = document.createElement("video");
+          const canplayWebm = testVideo.canPlayType('video/webm; codecs="vp8, vorbis"');
+          if (canplayWebm == "") {
+            document.querySelector("#paintandquest-video-link").setAttribute(
+              "src", "#paintandquest-video-mp4");
+            document.querySelector("#paintandquest-video-mp4").setAttribute("visible", true);
+          } else {
+            document.querySelector("#paintandquest-video-link").setAttribute(
+              "src", "#paintandquest-video-webm");
+            document.querySelector("#paintandquest-video-webm").setAttribute("visible", true);
+          }
         });
-        this.el.addEventListener('targetLost', event => {
-          console.log("target lost");
+
+        document.querySelector("#paintandquest-video-link").addEventListener('click', function(evt) {
+          if (document.querySelector("#paintandquest-video-link").getAttribute("src") === "#paintandquest-video-mp4") {
+            document.querySelector("#paintandquest-video-mp4").play();
+          } else {
+            document.querySelector("#paintandquest-video-webm").play();
+          }
         });
       }
+
+      const showAvatar = (onDone) => {
+        const avatar = document.querySelector("#avatar");
+        let z = -0.3;
+        const id = setInterval(() => {
+          z += 0.008;
+          if (z >= 0.3) {
+            clearInterval(id);
+            onDone();
+          }
+          avatar.setAttribute("position", "0 -0.25 " + z);
+        }, 10);
+      }
+
+      AFRAME.registerComponent('mytarget', {
+        init: function() {
+          this.el.addEventListener('targetFound', event => {
+            console.log("target found");
+            showAvatar(() => {
+              setTimeout(() => {
+                showInfo();
+              }, 300);
+            });
+          });
+          this.el.addEventListener('targetLost', event => {
+            console.log("target lost");
+          });
+        }
+      });
+
+      // Hide loading overlay when A-Frame is fully loaded
+      document.querySelector('a-scene').addEventListener('loaded', () => {
+        document.querySelector('.mindar-ui-loading').classList.add('hidden');
+      });
     });
   </script>
 
@@ -225,7 +229,7 @@
   </style>
 </head>
 <body>
-  <div style="color: #f00;">Ver1.3.5</div>
+  <div style="color: #f00;">Ver1.3.6</div>
 
   <div class="example-container">
     <div id="example-scanning-overlay" class="">
@@ -234,23 +238,10 @@
         <div class="scanline"></div>
       </div>
     </div>
-
-    <a-scene mindar-image="filterMinCF:0.001; filterBeta: 0.01; imageTargetSrc: ./assets/target/targets.mind; showStats: false; uiScanning: #example-scanning-overlay;"
-    embedded="" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights"
-    vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false"
-    inspector="" keyboard-shortcuts="" screenshot="">
+    <a-scene mindar-image="imageTargetSrc: ./assets/target/pq.mind; autoStart: true; uiLoading: no; uiScanning: no; uiError: no;" color-space="sRGB" embedded>
       <a-assets>
         <img id="card" src="./assets/target/bc.png" />
         <img id="profile" src="./assets/icon/profile.png" />
-        <img id="web" src="./assets/icon/web.png" />
-        <img id="email" src="./assets/icon/email.png" />
-        <img id="location" src="./assets/icon/location.png" />
-        <img id="pf1" src="./assets/portfolio/pf1.png" />
-        <img id="pf2" src="./assets/portfolio/pf2.png" />
-        <img id="pf3" src="./assets/portfolio/pf3.png" />
-        <img id="pf4" src="./assets/portfolio/pf4.png" />
-        <img id="pf5" src="./assets/portfolio/pf5.png" />
-        <img id="pf6" src="./assets/portfolio/pf6.png" />
         <video id="paintandquest-video-mp4" autoplay loop muted="true" crossorigin="anonymous" src="./assets/video/paintandquest.mp4"></video>
         <video id="paintandquest-video-webm" autoplay loop muted="true" crossorigin="anonymous" src="./assets/video/paintandquest.webm"></video>
       </a-assets>
