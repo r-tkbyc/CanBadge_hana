@@ -10,43 +10,104 @@
 
   <script>
     const showInfo = () => {
+      let y = 0;
       const profileButton = document.querySelector("#profile-button");
       const webButton = document.querySelector("#web-button");
       const emailButton = document.querySelector("#email-button");
       const locationButton = document.querySelector("#location-button");
+      const text = document.querySelector("#text");
 
       profileButton.setAttribute("visible", true);
-      setTimeout(() => webButton.setAttribute("visible", true), 300);
-      setTimeout(() => emailButton.setAttribute("visible", true), 600);
-      setTimeout(() => locationButton.setAttribute("visible", true), 900);
+      setTimeout(() => {
+        webButton.setAttribute("visible", true);
+      }, 300);
+      setTimeout(() => {
+        emailButton.setAttribute("visible", true);
+      }, 600);
+      setTimeout(() => {
+        locationButton.setAttribute("visible", true);
+      }, 900);
 
-      const showPortfolioItem = (videoId) => {
-        const videos = ['#profile-video', '#web-video', '#email-video', '#location-video'];
-        videos.forEach(id => document.querySelector(id).setAttribute('visible', false));
-        const selectedVideo = document.querySelector(videoId);
-        selectedVideo.setAttribute('visible', true);
-        selectedVideo.play();
-      };
+      let currentTab = '';
+      webButton.addEventListener('click', function(evt) {
+        text.setAttribute("value", "https://softmind.tech");
+        currentTab = 'web';
+      });
+      emailButton.addEventListener('click', function(evt) {
+        text.setAttribute("value", "hello@softmind.tech");
+        currentTab = 'email';
+      });
+      profileButton.addEventListener('click', function(evt) {
+        text.setAttribute("value", "AR, VR solutions and consultation");
+        currentTab = 'profile';
+      });
+      locationButton.addEventListener('click', function(evt) {
+        console.log("loc");
+        text.setAttribute("value", "Vancouver, Canada | Hong Kong");
+        currentTab = 'location';
+      });
 
-      profileButton.addEventListener('click', () => showPortfolioItem('#profile-video'));
-      webButton.addEventListener('click', () => showPortfolioItem('#web-video'));
-      emailButton.addEventListener('click', () => showPortfolioItem('#email-video'));
-      locationButton.addEventListener('click', () => showPortfolioItem('#location-video'));
-    };
+      text.addEventListener('click', function(evt) {
+        if (currentTab === 'web') {
+          window.location.href = "https://softmind.tech";
+        }
+      });
+    }
 
     const showPortfolio = (done) => {
       const portfolio = document.querySelector("#portfolio-panel");
-      portfolio.setAttribute("visible", true);
+      const portfolioLeftButton = document.querySelector("#portfolio-left-button");
+      const portfolioRightButton = document.querySelector("#portfolio-right-button");
+      const paintandquestPreviewButton = document.querySelector("#paintandquest-preview-button");
+
       let y = 0;
+      let currentItem = 0;
+
+      portfolio.setAttribute("visible", true);
+
+      const showPortfolioItem = (item) => {
+        for (let i = 0; i <= 2; i++) {
+          document.querySelector("#portfolio-item" + i).setAttribute(
+            "visible", i === item);
+        }
+      }
       const id = setInterval(() => {
         y += 0.008;
         if (y >= 0.6) {
           clearInterval(id);
-          setTimeout(() => done(), 500);
+          portfolioLeftButton.setAttribute("visible", true);
+          portfolioRightButton.setAttribute("visible", true);
+          portfolioLeftButton.addEventListener('click', () => {
+            currentItem = (currentItem + 1) % 3;
+            showPortfolioItem(currentItem);
+          });
+          portfolioRightButton.addEventListener('click', () => {
+            currentItem = (currentItem - 1 + 3) % 3;
+            showPortfolioItem(currentItem);
+          });
+
+          paintandquestPreviewButton.addEventListener('click', () => {
+            paintandquestPreviewButton.setAttribute("visible", false);
+            const testVideo = document.createElement("video");
+            const canplayWebm = testVideo.canPlayType('video/webm; codecs="vp8, vorbis"');
+            if (canplayWebm == "") {
+              document.querySelector("#paintandquest-video-link").setAttribute(
+                "src", "#paintandquest-video-mp4");
+              document.querySelector("#paintandquest-video-mp4").play();
+            } else {
+              document.querySelector("#paintandquest-video-link").setAttribute(
+                "src", "#paintandquest-video-webm");
+              document.querySelector("#paintandquest-video-webm").play();
+            }
+          });
+
+          setTimeout(() => {
+            done();
+          }, 500);
         }
         portfolio.setAttribute("position", "0 " + y + " -0.01");
       }, 10);
-    };
+    }
 
     const showAvatar = (onDone) => {
       const avatar = document.querySelector("#avatar");
@@ -59,19 +120,26 @@
         }
         avatar.setAttribute("position", "0 -0.25 " + z);
       }, 10);
-    };
+    }
 
     AFRAME.registerComponent('mytarget', {
       init: function() {
         this.el.addEventListener('targetFound', event => {
           console.log("target found");
           showAvatar(() => {
-            setTimeout(() => showPortfolio(showInfo), 300);
+            setTimeout(() => {
+              showPortfolio(() => {
+                setTimeout(() => {
+                  showInfo();
+                }, 300);
+              });
+            }, 300);
           });
         });
         this.el.addEventListener('targetLost', event => {
-          console.log("target lost");
+          console.log("target found");
         });
+        //this.el.emit('targetFound');
       }
     });
   </script>
@@ -229,7 +297,7 @@
 </head>
 
 <body>
-  <div style="color: #f00;">Ver1.2.0</div>
+  <div style="color: #f00;">Ver1.2.1</div>
 
   <div class="example-container">
     <div id="example-scanning-overlay" class="">
@@ -253,12 +321,13 @@
         <img id="icon-play" src="./assets/card-example/icons/play.png">
         <img id="icon-left" src="./assets/card-example/icons/left.png">
         <img id="icon-right" src="./assets/card-example/icons/right.png">
-
-        <!-- <img id="paintandquest-preview" src="./assets/card-example/portfolio/paintandquest-preview.png"> -->
-        <video id="profile-video" autoplay="false" loop="true" src="./assets/videos/video1.mp4" playsinline="" webkit-playsinline=""></video>
-        <video id="web-video" autoplay="false" loop="true" src="./assets/videos/video2.mp4" playsinline="" webkit-playsinline=""></video>
-        <video id="email-video" autoplay="false" loop="true" src="./assets/videos/video3.mp4" playsinline="" webkit-playsinline=""></video>
-        <video id="location-video" autoplay="false" loop="true" src="./assets/videos/video4.mp4" playsinline="" webkit-playsinline=""></video>
+        <img id="paintandquest-preview" src="./assets/card-example/portfolio/paintandquest-preview.png">
+        <video id="paintandquest-video-mp4" autoplay="false" loop="true" src="./assets/videos/video1.mp4"
+        playsinline="" webkit-playsinline=""></video>
+        <video id="paintandquest-video-webm" autoplay="false" loop="true" src="./assets/videos/video1.webm"
+        playsinline="" webkit-playsinline=""></video>
+        <img id="coffeemachine-preview" src="./assets/card-example/portfolio/coffeemachine-preview.png">
+        <img id="peak-preview" src="./assets/card-example/portfolio/peak-preview.png">
 
         <a-asset-item id="avatarModel" src="./assets/card-example/softmind/scene.gltf"></a-asset-item>
       </a-assets>
