@@ -58,7 +58,7 @@
       const portfolio = document.querySelector("#portfolio-panel");
       const portfolioLeftButton = document.querySelector("#portfolio-left-button");
       const portfolioRightButton = document.querySelector("#portfolio-right-button");
-      const paintandquestPreviewButton = document.querySelector("#paintandquest-preview-button");
+      const paintandquestPreviewButton0 = document.querySelector("#paintandquest-preview-button");
 
       let y = 0;
       let currentItem = 0;
@@ -86,8 +86,8 @@
             showPortfolioItem(currentItem);
           });
 
-          paintandquestPreviewButton.addEventListener('click', () => {
-            paintandquestPreviewButton.setAttribute("visible", false);
+          paintandquestPreviewButton0.addEventListener('click', () => {
+            paintandquestPreviewButton0.setAttribute("visible", false);
             const testVideo0 = document.createElement("video");
             const canplayWebm = testVideo0.canPlayType('video/webm; codecs="vp8, vorbis"');
             if (canplayWebm == "") {
@@ -297,7 +297,7 @@
 </head>
 
 <body>
-  <div style="color: #f00;">Ver1.2.4</div>
+  <div style="color: #f00;">Ver1.2.5</div>
 
   <div class="example-container">
     <div id="example-scanning-overlay" class="">
