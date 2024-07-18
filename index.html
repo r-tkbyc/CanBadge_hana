@@ -75,7 +75,7 @@
       }
       const id = setInterval(() => {
         y += 0.008;
-        if (y >= 0.6) {
+        if (y >= 1.6) {
           clearInterval(id);
           portfolioLeftButton.setAttribute("visible", true);
           portfolioRightButton.setAttribute("visible", true);
@@ -93,12 +93,10 @@
             const testVideo0 = document.createElement("video");
             const canplayWebm0 = testVideo0.canPlayType('video/webm; codecs="vp8, vorbis"');
             if (canplayWebm0 == "") {
-              document.querySelector("#video0-link").setAttribute(
-                "src", "#video0-mp4");
+              document.querySelector("#video0-link").setAttribute("src", "#video0-mp4");
               document.querySelector("#video0-mp4").play();
             } else {
-              document.querySelector("#video0-link").setAttribute(
-                "src", "#video0-webm");
+              document.querySelector("#video0-link").setAttribute("src", "#video0-webm");
               document.querySelector("#video0-webm").play();
             }
           });
@@ -108,12 +106,10 @@
             const testVideo1 = document.createElement("video");
             const canplayWebm1 = testVideo1.canPlayType('video/webm; codecs="vp8, vorbis"');
             if (canplayWebm1 == "") {
-              document.querySelector("#video1-link").setAttribute(
-                "src", "#video1-mp4");
+              document.querySelector("#video1-link").setAttribute("src", "#video1-mp4");
               document.querySelector("#video1-mp4").play();
             } else {
-              document.querySelector("#video1-link").setAttribute(
-                "src", "#video1-webm");
+              document.querySelector("#video1-link").setAttribute("src", "#video1-webm");
               document.querySelector("#video1-webm").play();
             }
           });
@@ -314,7 +310,7 @@
 </head>
 
 <body>
-  <div style="color: #f00;">Ver1.4.7</div>
+  <div style="color: #f00;">Ver1.4.8</div>
 
   <div class="example-container">
     <div id="example-scanning-overlay" class="">
@@ -343,8 +339,6 @@
         <video id="video0-webm" autoplay="false" loop="true" src="./assets/videos/video0.webm" playsinline="" webkit-playsinline=""></video>
         <video id="preview1-mp4" autoplay="false" loop="true" src="./assets/videos/video1.mp4" playsinline="" webkit-playsinline=""></video>
         <video id="preview-1webm" autoplay="false" loop="true" src="./assets/videos/video1.webm" playsinline="" webkit-playsinline=""></video>
-        <!-- <video id="peak-preview-mp4" autoplay="false" loop="true" src="./assets/videos/video3.mp4" playsinline="" webkit-playsinline=""></video> -->
-        <!-- <video id="peak-preview-webm" autoplay="false" loop="true" src="./assets/videos/video3.webm" playsinline="" webkit-playsinline=""></video> -->
         <a-asset-item id="avatarModel" src="./assets/card-example/softmind/scene.gltf"></a-asset-item>
       </a-assets>
 
