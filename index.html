@@ -55,8 +55,8 @@
 
     const showPortfolio = (done) => {
       const portfolio = document.querySelector("#image-panel");
-      const portfolioLeftButton = document.querySelector("#portfolio-left-button");
-      const portfolioRightButton = document.querySelector("#portfolio-right-button");
+      const imageLeftButton = document.querySelector("#image-left-button");
+      const imageRightButton = document.querySelector("#image-right-button");
       const startImageItem = document.querySelector("#start-image-item");
 
       let y = 0;
@@ -74,13 +74,13 @@
         y += 0.016;
         if (y >= 0.6) {
           clearInterval(id);
-          portfolioLeftButton.setAttribute("visible", true);
-          portfolioRightButton.setAttribute("visible", true);
-          portfolioLeftButton.addEventListener('click', () => {
+          imageLeftButton.setAttribute("visible", true);
+          imageRightButton.setAttribute("visible", true);
+          imageLeftButton.addEventListener('click', () => {
             currentItem = (currentItem + 1) % 4;
             showPortfolioItem(currentItem);
           });
-          portfolioRightButton.addEventListener('click', () => {
+          imageRightButton.addEventListener('click', () => {
             currentItem = (currentItem - 1 + 4) % 4;
             showPortfolioItem(currentItem);
           });
@@ -285,7 +285,7 @@
 </head>
 
 <body>
-  <div style="color: #f00;">Ver1.7.8</div>
+  <div style="color: #f00;">Ver1.7.9</div>
 
   <div class="example-container">
     <div id="example-scanning-overlay" class="">
@@ -333,9 +333,9 @@
             <a-image class="clickable" src="#language3-image" alpha-test="0.5" position="0 0 0" height="0.552" width="1" material="" geometry=""></a-image>
           </a-entity>
 
-          <a-image visible="false" id="portfolio-left-button" class="clickable" src="#icon-left" position="-0.55 0 0"
+          <a-image visible="false" id="image-left-button" class="clickable" src="#icon-left" position="-0.55 0 0"
           height="0.15" width="0.15" material="" geometry=""></a-image>
-          <a-image visible="false" id="portfolio-right-button" class="clickable" src="#icon-right" position="0.55 0 0"
+          <a-image visible="false" id="image-right-button" class="clickable" src="#icon-right" position="0.55 0 0"
           height="0.15" width="0.15" material="" geometry=""></a-image>
         </a-entity>
 
