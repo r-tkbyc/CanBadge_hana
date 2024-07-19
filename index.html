@@ -59,7 +59,7 @@
       const imageRightButton = document.querySelector("#image-right-button");
       const startImageItem = document.querySelector("#start-image-item");
 
-      let y = 0;
+      let y = 0.3;
       let currentItem = 0;
 
       imagePanel.setAttribute("visible", true);
@@ -71,7 +71,7 @@
         }
       }
       const id = setInterval(() => {
-        y += 0.016;
+        y += 0.005;
         if (y >= 0.6) {
           clearInterval(id);
           imageLeftButton.setAttribute("visible", true);
