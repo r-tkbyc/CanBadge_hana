@@ -60,7 +60,7 @@
       const startImageItem = document.querySelector("#start-image-item");
 
       let y = 0;
-      let scale = 0; //
+      let scale = 0.001; //
       let currentItem = 0;
 
       imagePanel.setAttribute("visible", true);
@@ -73,7 +73,7 @@
       }
       const id = setInterval(() => {
         y += 0.003;
-        scale += (1 - 0.001) / (0.3 / 0.003);
+        scale += (1 - 0.001) / (0.3 / 0.003); //
         if (y >= 0.3) {
           clearInterval(id);
           imageLeftButton.setAttribute("visible", true);
@@ -96,7 +96,7 @@
           }, 500);
         }
         imagePanel.setAttribute("position", "0 " + y + " -0.01");
-        imagePanel.setAttribute("scale", `${scale} ${scale} ${scale}`);
+        imagePanel.setAttribute("scale", `${scale} ${scale} ${scale}`); //
       }, 10);
     }
 
@@ -295,7 +295,7 @@
 </head>
 
 <body>
-  <div style="color: #f00;">Ver2.1.5</div>
+  <div style="color: #f00;">Ver2.1.6</div>
 
   <div class="example-container">
     <div id="example-scanning-overlay" class="">
