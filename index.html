@@ -67,19 +67,10 @@
 
       const showImageItem = (item) => {
         for (let i = 0; i <= 3; i++) {
-          const imageItem = document.querySelector("#image-item" + i);
-          if (i === item) {
-            imageItem.setAttribute("visible", true);
-            imageItem.setAttribute("scale", "0.001 0.001 0.001");
-            setTimeout(() => {
-              imageItem.setAttribute("scale", "1 1 1");
-            }, 10); // スムーズなアニメーション開始のための短い遅延
-          } else {
-            imageItem.setAttribute("visible", false);
-          }
+          document.querySelector("#image-item" + i).setAttribute(
+            "visible", i === item);
         }
       }
-
       const id = setInterval(() => {
         y += 0.01;
         scale += (1 - 0.001) / (0.3 / 0.01); //
@@ -340,7 +331,7 @@
         <a-entity visible="false" id="image-panel" position="0 0 -0.01">
           <!-- <a-text value="Portfolio" color="black" align="center" width="2" position="0 0.4 0" text=""></a-text> -->
           <a-entity id="image-item0">
-            <a-image id="start-image-item" class="clickable" src="#start-image" alpha-test="0.5" position="0 0.3 0" height="0.552" width="1" material="" geometry=""></a-image>
+            <a-image id="start-image-item" class="clickable" src="#start-image" alpha-test="0.5" position="1 0.3 0" height="0.552" width="1" material="" geometry=""></a-image>
           </a-entity>
           <a-entity id="image-item1" visible="false">
             <a-image class="clickable" src="#language1-image" alpha-test="0.5" position="0 0.3 0" height="0.552" width="1" material="" geometry=""></a-image>
