@@ -96,17 +96,22 @@
         imagePanel.setAttribute("position", "0 " + y + " -0.01");
       }, 10);
     }
-
     const showAvatar = (onDone) => {
       const avatar = document.querySelector("#avatar");
-      let z = -3.3;
+      let z = -0.3;
+      let scale = 0.001;
+
       const id = setInterval(() => {
         z += 0.008;
+        scale += (0.15 - 0.001) / (0.3 / 0.008);  // 位置のアニメーションと同期させるためのスケール増分
+
         if (z >= 0.3) {
           clearInterval(id);
           onDone();
         }
+
         avatar.setAttribute("position", "0 -0.085 " + z);
+        avatar.setAttribute("scale", `${scale} ${scale} ${scale}`);
       }, 10);
     }
 
@@ -285,7 +290,7 @@
 </head>
 
 <body>
-  <div style="color: #f00;">Ver1.8.3</div>
+  <div style="color: #f00;">Ver1.8.4</div>
 
   <div class="example-container">
     <div id="example-scanning-overlay" class="">
