@@ -33,11 +33,11 @@
 
       let currentTab = '';
       countryButton0.addEventListener('click', function(evt) {
+        text.setAttribute("value", "Go to Japanese Wiki");
+        currentTab = 'country0';
         if (currentTab === 'country0') {
-          text.setAttribute("value", "Go to Japanese Wiki");
           window.location.href = "https://ja.wikipedia.org/wiki/%E8%8A%B1";
         }
-        currentTab = 'country0';
       });
       countryButton1.addEventListener('click', function(evt) {
         text.setAttribute("value", "China");
@@ -325,7 +325,7 @@
 </head>
 
 <body>
-  <div style="color: #f00;">Ver2.3.6</div>
+  <div style="color: #f00;">Ver2.3.7</div>
 
   <div class="example-container">
     <div id="example-scanning-overlay" class="">
