@@ -33,7 +33,7 @@
 
       let currentTab = '';
       countryButton0.addEventListener('click', function(evt) {
-        text.setAttribute("value", "Go to Japanese Wiki");
+        text.setAttribute("value", "Go to the Japanese Wiki");
         currentTab = 'country0';
         if (currentTab === 'country0') {
           window.location.href = "https://ja.wikipedia.org/wiki/%E8%8A%B1";
@@ -47,9 +47,12 @@
         text.setAttribute("value", "Taiwan");
         currentTab = 'country2';
       });
-      countryButton3.addEventListener('click', function(evt) {
-        text.setAttribute("value", "United States of America");
+      countryButton3.addEventListener('click', function(evt) {https://en.wikipedia.org/wiki/Flower
+        text.setAttribute("value", "Go to the American Wiki");
         currentTab = 'country3';
+        if (currentTab === 'country3') {
+          window.location.href = "https://en.wikipedia.org/wiki/Flower";
+        }
       });
 
       // text.addEventListener('click', function(evt) {
@@ -325,7 +328,7 @@
 </head>
 
 <body>
-  <div style="color: #f00;">Ver2.3.7</div>
+  <div style="color: #f00;">Ver2.3.8</div>
 
   <div class="example-container">
     <div id="example-scanning-overlay" class="">
