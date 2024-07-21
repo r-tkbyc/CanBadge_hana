@@ -27,6 +27,9 @@
       setTimeout(() => {
         countryButton3.setAttribute("visible", true);
       }, 900);
+      setTimeout(() => {
+        text.setAttribute("visible", true);
+      }, 1200);
 
       let currentTab = '';
       countryButton0.addEventListener('click', function(evt) {
@@ -295,7 +298,7 @@
 </head>
 
 <body>
-  <div style="color: #f00;">Ver2.2.7</div>
+  <div style="color: #f00;">Ver2.2.8</div>
 
   <div class="example-container">
     <div id="example-scanning-overlay" class="">
@@ -329,7 +332,7 @@
 
       <a-entity id="mytarget" mytarget="" mindar-image-target="targetIndex: 0">
         <a-entity visible="false" id="image-panel" position="0 0 -0.01">
-          <a-text value="Portfolio" color="black" align="center" width="2" position="0 0.4 0" text=""></a-text>
+          <!-- <a-text value="Portfolio" color="black" align="center" width="2" position="0 0.4 0" text=""></a-text> -->
           <a-entity id="image-item0">
             <a-image id="start-image-item" class="clickable" src="#start-image" alpha-test="0.5" position="0 0.3 0" height="0.552" width="1" material="" geometry=""></a-image>
           </a-entity>
@@ -368,7 +371,7 @@
         <a-gltf-model id="avatar" rotation="" position="0 -0.085 0" scale="0 0 0" src="#avatarModel" gltf-model=""
         animation="property: rotation; from: 0 -20 0; to: 0 20 0; dur: 2500; easing: easeInOutSine; loop: true; dir: alternate"></a-gltf-model>
 
-        <a-text id="text" class="clickable" value="" color="black" align="center" width="1"
+        <a-text visible="false" id="text" class="clickable" value="" color="black" align="center" width="1"
         position="0 -0.375 0" geometry="primitive:plane; height: 0.1; width: 1;" material="opacity: 0.5" text=""></a-text>
       </a-entity>
       <canvas class="a-canvas" data-aframe-canvas="true" data-engine="three.js r147" width="54" height="960"></canvas>
