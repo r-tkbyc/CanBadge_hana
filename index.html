@@ -34,6 +34,7 @@
       let currentTab = '';
       countryButton0.addEventListener('click', function(evt) {
         if (currentTab === 'country0') {
+          text.setAttribute("value", "Go to Japanese Wiki");
           window.location.href = "https://ja.wikipedia.org/wiki/%E8%8A%B1";
         }
         currentTab = 'country0';
@@ -324,7 +325,7 @@
 </head>
 
 <body>
-  <div style="color: #f00;">Ver2.3.5</div>
+  <div style="color: #f00;">Ver2.3.6</div>
 
   <div class="example-container">
     <div id="example-scanning-overlay" class="">
